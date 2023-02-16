@@ -15,19 +15,19 @@ public class XPObeliskTileRenderer extends GeoBlockRenderer<XPObeliskEntity> {
         super(rendererDispatcherIn, new AnimatedGeoModel<XPObeliskEntity>() {
             //render setup for geckolib animated model
             @Override
-            public ResourceLocation getModelLocation(XPObeliskEntity animatable) {
-                return new ResourceLocation(ExperienceObelisk.MOD_ID, "geo/xpobelisk.geo.json");
-            }
+			public ResourceLocation getAnimationResource(XPObeliskEntity animatable) {
+				return new ResourceLocation(ExperienceObelisk.MOD_ID, "animations/xpobelisk.anim.json");
+			}
 
-            @Override
-            public ResourceLocation getTextureLocation(XPObeliskEntity entity) {
-                return new ResourceLocation(ExperienceObelisk.MOD_ID, "textures/custom_models/wholetexture.png");
-            }
+			@Override
+			public ResourceLocation getModelResource(XPObeliskEntity object) {
+				return new ResourceLocation(ExperienceObelisk.MOD_ID, "geo/xpobelisk.geo.json");
+			}
 
-            @Override
-            public ResourceLocation getAnimationFileLocation(XPObeliskEntity animatable) {
-                return new ResourceLocation(ExperienceObelisk.MOD_ID, "animations/xpobelisk.anim.json");
-            }
+			@Override
+			public ResourceLocation getTextureResource(XPObeliskEntity object) {
+				return new ResourceLocation(ExperienceObelisk.MOD_ID, "textures/custom_models/wholetexture.png");
+			}
         });
     }
 

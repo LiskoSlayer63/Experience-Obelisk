@@ -5,6 +5,7 @@
 
   //blocks
   "block.experienceobelisk.experience_obelisk": "Experience Obelisk",
+  "block.experienceobelisk.raw_experience": "Raw Experience",
 
   //tabs
   "itemGroup.experience_obelisk": "Experience Obelisk",
@@ -28,6 +29,6 @@
   "button.experienceobelisk.experience_obelisk.settings": "§l⚙§r",
 
   //fluid
-  "fluid.experienceobelisk.raw_experience": "Raw Experience"
+  "fluid_type.experienceobelisk.raw_experience": "Raw Experience"
 
 }

@@ -13,9 +13,9 @@ import java.util.function.Supplier;
 
 public class UpdateToServer {
 
-    public static BlockPos pos;
-    public static int XP;
-    public static Request request;
+    public BlockPos pos;
+    public int XP;
+    public Request request;
     private long playerXP;
     private long finalXP;
 

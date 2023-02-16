@@ -35,7 +35,7 @@ public class ExperienceObeliskScreen extends Screen{
     private final ResourceLocation texture = new ResourceLocation("experienceobelisk:textures/gui/container/dark_bg2.png");
 
     public ExperienceObeliskScreen(Level level, Player player, BlockPos pos) {
-        super(new TextComponent("Experience Obelisk"));
+        super(Component.literal("Experience Obelisk"));
         this.level = level;
         this.player = player;
         this.pos = pos;
@@ -150,21 +150,21 @@ public class ExperienceObeliskScreen extends Screen{
         int y2 = -3;
 
         settings = addRenderableWidget(new Button(this.width / 2 + 86, this.height / 2 - 77, 14, 20,
-                new TranslatableComponent("button.experienceobelisk.experience_obelisk.settings"), (onPress) -> {
+                Component.translatable("button.experienceobelisk.experience_obelisk.settings"), (onPress) -> {
 
             Minecraft.getInstance().pushGuiLayer(new ExperienceObeliskOptionsScreen(level, player, pos, this));
         },new Button.OnTooltip(){
 
             @Override
             public void onTooltip(Button pButton, PoseStack pPoseStack, int pMouseX, int pMouseY) {
-                renderTooltip(pPoseStack, new TranslatableComponent("tooltip.experienceobelisk.experience_obelisk.settings"), pMouseX, pMouseY);
+                renderTooltip(pPoseStack, Component.translatable("tooltip.experienceobelisk.experience_obelisk.settings"), pMouseX, pMouseY);
             }
         }));
 
 
         //deposit
 
-        add1 = addRenderableWidget(new Button((int) (this.width / 2 - 1.5*w - s), this.height / 2 - y1, w, h, new TextComponent("+1")
+        add1 = addRenderableWidget(new Button((int) (this.width / 2 - 1.5*w - s), this.height / 2 - y1, w, h, Component.literal("+1")
                 .setStyle(green), (onPress) -> {
 
             PacketHandler.INSTANCE.sendToServer(new UpdateToServer(pos, 1, FILL));
@@ -173,13 +173,13 @@ public class ExperienceObeliskScreen extends Screen{
                 new Button.OnTooltip() {
                     @Override
                     public void onTooltip(Button pButton, PoseStack pPoseStack, int pMouseX, int pMouseY) {
-                        renderTooltip(pPoseStack, new TranslatableComponent("tooltip.experienceobelisk.experience_obelisk.add1"), pMouseX, pMouseY);
+                        renderTooltip(pPoseStack, Component.translatable("tooltip.experienceobelisk.experience_obelisk.add1"), pMouseX, pMouseY);
                     }
                 }
         ));
 
 
-        add10 = addRenderableWidget(new Button(this.width / 2 - w/2, this.height / 2 - y1, w, h, new TextComponent("+10")
+        add10 = addRenderableWidget(new Button(this.width / 2 - w/2, this.height / 2 - y1, w, h, Component.literal("+10")
                 .setStyle(green), (onPress) -> {
 
             PacketHandler.INSTANCE.sendToServer(new UpdateToServer(pos, 10, FILL));
@@ -188,12 +188,12 @@ public class ExperienceObeliskScreen extends Screen{
                 new Button.OnTooltip() {
                     @Override
                     public void onTooltip(Button pButton, PoseStack pPoseStack, int pMouseX, int pMouseY) {
-                        renderTooltip(pPoseStack, new TranslatableComponent("tooltip.experienceobelisk.experience_obelisk.add10"), pMouseX, pMouseY);
+                        renderTooltip(pPoseStack, Component.translatable("tooltip.experienceobelisk.experience_obelisk.add10"), pMouseX, pMouseY);
                     }
                 }
         ));
 
-        addAll = addRenderableWidget(new Button((int) (this.width / 2 + 0.5*w + s), this.height / 2 - y1, w, h, new TextComponent("+All")
+        addAll = addRenderableWidget(new Button((int) (this.width / 2 + 0.5*w + s), this.height / 2 - y1, w, h, Component.literal("+All")
                 .setStyle(green), (onPress) -> {
 
             PacketHandler.INSTANCE.sendToServer(new UpdateToServer(pos, 0, FILL_ALL));
@@ -202,14 +202,14 @@ public class ExperienceObeliskScreen extends Screen{
                 new Button.OnTooltip() {
                     @Override
                     public void onTooltip(Button pButton, PoseStack pPoseStack, int pMouseX, int pMouseY) {
-                        renderTooltip(pPoseStack, new TranslatableComponent("tooltip.experienceobelisk.experience_obelisk.addAll"), pMouseX, pMouseY);
+                        renderTooltip(pPoseStack, Component.translatable("tooltip.experienceobelisk.experience_obelisk.addAll"), pMouseX, pMouseY);
                     }
                 }
         ));
 
 
         //withdraw
-        drain1 = addRenderableWidget(new Button((int) (this.width / 2 - 1.5*w - s), this.height / 2 - y2, w, h, new TextComponent("-1")
+        drain1 = addRenderableWidget(new Button((int) (this.width / 2 - 1.5*w - s), this.height / 2 - y2, w, h, Component.literal("-1")
                 .setStyle(red), (onPress) -> {
 
             PacketHandler.INSTANCE.sendToServer(new UpdateToServer(pos, 1, DRAIN));
@@ -218,12 +218,12 @@ public class ExperienceObeliskScreen extends Screen{
                 new Button.OnTooltip() {
                     @Override
                     public void onTooltip(Button pButton, PoseStack pPoseStack, int pMouseX, int pMouseY) {
-                        renderTooltip(pPoseStack, new TranslatableComponent("tooltip.experienceobelisk.experience_obelisk.drain1"), pMouseX, pMouseY);
+                        renderTooltip(pPoseStack, Component.translatable("tooltip.experienceobelisk.experience_obelisk.drain1"), pMouseX, pMouseY);
                     }
                 }
         ));
 
-        drain10 = addRenderableWidget(new Button(this.width / 2 - w/2, this.height / 2 - y2, w, h, new TextComponent("-10")
+        drain10 = addRenderableWidget(new Button(this.width / 2 - w/2, this.height / 2 - y2, w, h, Component.literal("-10")
                 .setStyle(red), (onPress) -> {
 
             PacketHandler.INSTANCE.sendToServer(new UpdateToServer(pos, 10, DRAIN));
@@ -232,12 +232,12 @@ public class ExperienceObeliskScreen extends Screen{
                 new Button.OnTooltip() {
                     @Override
                     public void onTooltip(Button pButton, PoseStack pPoseStack, int pMouseX, int pMouseY) {
-                        renderTooltip(pPoseStack, new TranslatableComponent("tooltip.experienceobelisk.experience_obelisk.drain10"), pMouseX, pMouseY);
+                        renderTooltip(pPoseStack, Component.translatable("tooltip.experienceobelisk.experience_obelisk.drain10"), pMouseX, pMouseY);
                     }
                 }
         ));
 
-        drainAll = addRenderableWidget(new Button((int) (this.width / 2 + 0.5*w + s), this.height / 2 - y2, w, h, new TextComponent("-All")
+        drainAll = addRenderableWidget(new Button((int) (this.width / 2 + 0.5*w + s), this.height / 2 - y2, w, h, Component.literal("-All")
                 .setStyle(red), (onPress) -> {
 
             PacketHandler.INSTANCE.sendToServer(new UpdateToServer(pos, 0, DRAIN_ALL));
@@ -246,7 +246,7 @@ public class ExperienceObeliskScreen extends Screen{
                 new Button.OnTooltip() {
                     @Override
                     public void onTooltip(Button pButton, PoseStack pPoseStack, int pMouseX, int pMouseY) {
-                        renderTooltip(pPoseStack, new TranslatableComponent("tooltip.experienceobelisk.experience_obelisk.drainAll"), pMouseX, pMouseY);
+                        renderTooltip(pPoseStack, Component.translatable("tooltip.experienceobelisk.experience_obelisk.drainAll"), pMouseX, pMouseY);
                     }
                 }
         ));

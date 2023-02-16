@@ -2,20 +2,17 @@ package com.cyanogen.experienceobelisk.gui;
 
 import com.cyanogen.experienceobelisk.block_entities.XPObeliskEntity;
 import com.cyanogen.experienceobelisk.network.PacketHandler;
-import com.cyanogen.experienceobelisk.network.experienceobelisk.UpdateToServer;
 import com.cyanogen.experienceobelisk.network.experienceobelisk.XPObeliskUpdateRadius;
 import com.cyanogen.experienceobelisk.network.experienceobelisk.XPObeliskUpdateRedstone;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.Widget;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -38,7 +35,7 @@ public class ExperienceObeliskOptionsScreen extends Screen {
     private final ResourceLocation texture = new ResourceLocation("experienceobelisk:textures/gui/container/dark_bg2.png");
 
     protected ExperienceObeliskOptionsScreen(Level level, Player player, BlockPos pos, ExperienceObeliskScreen screen) {
-        super(new TextComponent("Experience Obelisk"));
+        super(Component.literal("Experience Obelisk"));
         this.level = level;
         this.player = player;
         this.pos = pos;
@@ -124,7 +121,7 @@ public class ExperienceObeliskOptionsScreen extends Screen {
             styleStatus = red;
         }
 
-        decreaseRadius = addRenderableWidget(new Button(this.width / 2 - 56, this.height / 2 - y1, 26, h, new TextComponent("-")
+        decreaseRadius = addRenderableWidget(new Button(this.width / 2 - 56, this.height / 2 - y1, 26, h, Component.literal("-")
                 .setStyle(red), (onPress) -> {
 
             PacketHandler.INSTANCE.sendToServer(new XPObeliskUpdateRadius(pos, -0.5));
@@ -133,7 +130,7 @@ public class ExperienceObeliskOptionsScreen extends Screen {
         }));
 
 
-        currentRadius = addRenderableWidget(new Button(this.width / 2 - 25, this.height / 2 - y1, 50, h, new TextComponent(String.valueOf(radius))
+        currentRadius = addRenderableWidget(new Button(this.width / 2 - 25, this.height / 2 - y1, 50, h, Component.literal(String.valueOf(radius))
                 , (onPress) -> {
 
             PacketHandler.INSTANCE.sendToServer(new XPObeliskUpdateRadius(pos, 0));
@@ -142,19 +139,19 @@ public class ExperienceObeliskOptionsScreen extends Screen {
                 new Button.OnTooltip() {
                     @Override
                     public void onTooltip(Button pButton, PoseStack pPoseStack, int pMouseX, int pMouseY) {
-                        renderTooltip(pPoseStack, new TranslatableComponent("tooltip.experienceobelisk.experience_obelisk.radius"), pMouseX, pMouseY);
+                        renderTooltip(pPoseStack, Component.translatable("tooltip.experienceobelisk.experience_obelisk.radius"), pMouseX, pMouseY);
                     }
                 }
         ));
 
-        increaseRadius = addRenderableWidget(new Button((int) (this.width / 2 + 30), this.height / 2 - y1, 26, h, new TextComponent("+")
+        increaseRadius = addRenderableWidget(new Button((int) (this.width / 2 + 30), this.height / 2 - y1, 26, h, Component.literal("+")
                 .setStyle(green), (onPress) -> {
 
             PacketHandler.INSTANCE.sendToServer(new XPObeliskUpdateRadius(pos, 0.5));
 
         }));
 
-        toggleRedstone = addRenderableWidget(new Button(this.width / 2 - 25, this.height / 2 - y2, w, h, new TextComponent(status).setStyle(styleStatus), onPress -> {
+        toggleRedstone = addRenderableWidget(new Button(this.width / 2 - 25, this.height / 2 - y2, w, h, Component.literal(status).setStyle(styleStatus), onPress -> {
 
             //send packet
 
@@ -168,7 +165,7 @@ public class ExperienceObeliskOptionsScreen extends Screen {
         }));
 
         back = addRenderableWidget(new Button(this.width / 2 + 86, this.height / 2 - 77, 14, 20,
-                new TranslatableComponent("button.experienceobelisk.experience_obelisk.settings"), (onPress) -> {
+                Component.translatable("button.experienceobelisk.experience_obelisk.settings"), (onPress) -> {
 
                 this.onClose();
 
@@ -176,7 +173,7 @@ public class ExperienceObeliskOptionsScreen extends Screen {
 
             @Override
             public void onTooltip(Button pButton, PoseStack pPoseStack, int pMouseX, int pMouseY) {
-                renderTooltip(pPoseStack, new TranslatableComponent("tooltip.experienceobelisk.experience_obelisk.back"), pMouseX, pMouseY);
+                renderTooltip(pPoseStack, Component.translatable("tooltip.experienceobelisk.experience_obelisk.back"), pMouseX, pMouseY);
             }
         }));
 

@@ -23,6 +23,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.*;
+
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -95,6 +96,7 @@ public class ExperienceObeliskBlock extends Block implements EntityBlock {
         if(pLevel.isClientSide()){
             GuiWrapper.openGUI(pState, pLevel, pPos, pPlayer);
         }
+        //ExperienceObelisk.LOGGER.info("FluidStack name: " + new FluidStack(ModFluidsInit.RAW_EXPERIENCE.get().getSource(), 1000).getDisplayName().getString());
         return InteractionResult.CONSUME;
     }
 

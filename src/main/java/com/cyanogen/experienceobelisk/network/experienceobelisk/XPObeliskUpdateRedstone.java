@@ -12,8 +12,8 @@ import java.util.function.Supplier;
 
 public class XPObeliskUpdateRedstone {
 
-    public static BlockPos pos;
-    public static boolean isControllable;
+    public BlockPos pos;
+    public boolean isControllable;
 
     public XPObeliskUpdateRedstone(BlockPos pos, boolean isControllable) {
         this.pos = pos;

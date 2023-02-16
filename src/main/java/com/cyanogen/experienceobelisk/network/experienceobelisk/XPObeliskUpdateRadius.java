@@ -12,8 +12,8 @@ import java.util.function.Supplier;
 
 public class XPObeliskUpdateRadius {
 
-    public static BlockPos pos;
-    public static double changeInRadius;
+    public BlockPos pos;
+    public double changeInRadius;
 
     public XPObeliskUpdateRadius(BlockPos pos, double changeInRadius) {
         this.pos = pos;

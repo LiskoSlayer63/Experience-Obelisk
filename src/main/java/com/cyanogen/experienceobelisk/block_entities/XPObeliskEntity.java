@@ -11,7 +11,6 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.RedstoneLampBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
@@ -25,25 +24,28 @@ import net.minecraftforge.fluids.capability.templates.FluidTank;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.builder.ILoopType.EDefaultLoopTypes;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
 
+@SuppressWarnings("removal")
 public class XPObeliskEntity extends BlockEntity implements IAnimatable{
 
     //-----------ANIMATIONS-----------//
 
     //events that control what animation is being played
     private <E extends BlockEntity & IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        AnimationController controller = event.getController();
+        AnimationController<E> controller = event.getController();
         controller.transitionLengthTicks = 0;
-        controller.setAnimation(new AnimationBuilder().addAnimation("xpobelisk.idle", true));
+        controller.setAnimation(new AnimationBuilder().addAnimation("xpobelisk.idle", EDefaultLoopTypes.LOOP));
 
         return PlayState.CONTINUE;
     }
@@ -56,10 +58,10 @@ public class XPObeliskEntity extends BlockEntity implements IAnimatable{
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
+        data.addAnimationController(new AnimationController<XPObeliskEntity>(this, "controller", 0, this::predicate));
     }
 
-    private final AnimationFactory manager = new AnimationFactory(this);
+    private final AnimationFactory manager = GeckoLibUtil.createFactory(this);
     @Override
     public AnimationFactory getFactory() {
         return manager;
@@ -126,12 +128,12 @@ public class XPObeliskEntity extends BlockEntity implements IAnimatable{
 
     protected FluidTank tank = xpObeliskTank();
     private final LazyOptional<IFluidHandler> handler = LazyOptional.of(() -> tank);
-    private static final Fluid rawExperience = ModFluidsInit.RAW_EXPERIENCE.get().getSource();
-    public static BlockPos pos;
-    public static BlockState state;
+    private static final Fluid rawExperience = ModFluidsInit.RAW_EXPERIENCE.get();
+    public BlockPos pos;
+    public BlockState state;
 
     private FluidTank xpObeliskTank() {
-        return new FluidTank(16000000){ //1903 levels
+        return new FluidTank(30970){ // 100 levels
             @Override
             protected void onContentsChanged()
             {

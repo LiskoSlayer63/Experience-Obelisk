@@ -3,7 +3,6 @@ package com.cyanogen.experienceobelisk.network;
 import com.cyanogen.experienceobelisk.block_entities.XPObeliskEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.network.NetworkEvent;
@@ -11,13 +10,11 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;
 
-import static com.cyanogen.experienceobelisk.network.UpdateToServer.Request.*;
-
 public class UpdateToServer {
 
-    public static BlockPos pos;
-    public static int XP;
-    public static Request request;
+    public BlockPos pos;
+    public int XP;
+    public Request request;
     private long playerXP;
     private long finalXP;
 

@@ -133,7 +133,7 @@ public class XPObeliskEntity extends BlockEntity implements IAnimatable{
     public BlockState state;
 
     private FluidTank xpObeliskTank() {
-        return new FluidTank(30970){ // 100 levels
+        return new FluidTank(31000){ // ~100 levels
             @Override
             protected void onContentsChanged()
             {
@@ -249,6 +249,10 @@ public class XPObeliskEntity extends BlockEntity implements IAnimatable{
 
     public int getFluidAmount(){
         return tank.getFluidAmount();
+    }
+    
+    public int getCapacity() {
+    	return tank.getCapacity();
     }
 
     public int getSpace(){ return tank.getSpace(); }

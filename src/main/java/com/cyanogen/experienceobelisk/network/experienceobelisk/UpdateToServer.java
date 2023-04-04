@@ -73,7 +73,7 @@ public class UpdateToServer {
 
                     //if amount to add exceeds remaining capacity
                     else if(playerXP - finalXP >= xpobelisk.getSpace()){
-                        sender.giveExperiencePoints(-xpobelisk.fill(16000000));
+                        sender.giveExperiencePoints(-xpobelisk.fill(xpobelisk.getCapacity()));
                     }
 
                     //normal operation
@@ -123,7 +123,7 @@ public class UpdateToServer {
                     }
                     else{
                         sender.giveExperiencePoints(-xpobelisk.getSpace());
-                        xpobelisk.setFluid(16000000);
+                        xpobelisk.setFluid(xpobelisk.getCapacity());
                     }
 
 
